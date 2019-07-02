@@ -13,6 +13,8 @@ public class GnuPG {
 	//COmentario
 	
 	//Otro comentario
+	
+	//Otro comentario
 
 	private final String kGnuPGCommand = "/usr/bin/gpg --batch --armor --output -";
 
