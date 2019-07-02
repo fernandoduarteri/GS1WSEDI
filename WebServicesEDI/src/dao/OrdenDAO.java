@@ -26,7 +26,7 @@ public class OrdenDAO extends JPAEntity<Order> {
 			objReturn.setMensaje(e.getMessage());
 			objReturn.setExito(Constantes.FLAG_EXITO_FALLA);
 			objReturn.setTotal(0);
-			log.info("Metodo salvar Exception: " + e);
+			log.info("Metodo salvar de la Clase OrdenDAO Exception: " + e);
 		}
 	}
 

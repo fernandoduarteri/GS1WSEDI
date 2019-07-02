@@ -11,6 +11,8 @@ import java.io.OutputStreamWriter;
 public class GnuPG {
 	
 	//COmentario
+	
+	//Otro comentario
 
 	private final String kGnuPGCommand = "/usr/bin/gpg --batch --armor --output -";
 
