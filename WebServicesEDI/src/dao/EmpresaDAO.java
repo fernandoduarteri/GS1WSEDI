@@ -1,18 +1,43 @@
 package dao;
 
+import java.util.logging.Logger;
+
 import Utilidades.Constantes;
+import model.Empresa;
 import model.ObjectReturn;
 import persist.JPAEntity;
 
-public class EmpresaDAO extends JPAEntity {
-
+public class EmpresaDAO extends JPAEntity<Empresa> {
+	
+	public EmpresaDAO(Class<Empresa> entityClass) {
+		super(entityClass);
+	}
+	private Logger log = Logger.getLogger(getClass().getName());
 	public void getall(ObjectReturn objReturn) throws Exception{
 		try {
-		objReturn.setData(super.findAll("Empresa"));
+		objReturn.setData(super.findAll());
 		objReturn.setMensaje("Exito");
 		objReturn.setExito(Constantes.FLAG_EXITO_EXITO);
-		objReturn.setTotal(super.findAll("Empresa").size());
+		objReturn.setTotal(super.count());
 		}catch(Exception e) {
+			log.info("Metodo getall" + e);
+			objReturn.setData("");
+			objReturn.setMensaje(e.getMessage());
+			objReturn.setExito(Constantes.FLAG_EXITO_FALLA);
+			objReturn.setTotal(0);
+		}
+	}
+	
+	public void getOne(ObjectReturn objReturn) throws Exception{
+		String where = (String) objReturn.getData();
+		String query = "";
+		try {
+			query = "SELECT c FROM Empresa c WHERE c.GLNProveedor=" + where;
+			objReturn.setData(super.findAllSorting(query));
+			objReturn.setMensaje("Exito");
+			objReturn.setExito(Constantes.FLAG_EXITO_EXITO);
+			objReturn.setTotal(1);
+		}catch (Exception e) {
 			objReturn.setData("");
 			objReturn.setMensaje(e.getMessage());
 			objReturn.setExito(Constantes.FLAG_EXITO_FALLA);

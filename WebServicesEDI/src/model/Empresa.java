@@ -24,7 +24,8 @@ public class Empresa implements Serializable {
 
 	@Column(name="CorreoAsig")
 	private String correoAsig;
-
+	
+	@Column(name="GLNProveedor")
 	private String GLNProveedor;
 
 	@Lob

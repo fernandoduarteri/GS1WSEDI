@@ -13,7 +13,11 @@ import javax.persistence.*;
 @NamedQuery(name="OrderItem.findAll", query="SELECT o FROM OrderItem o")
 public class OrderItem implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer idOrderItem;
+	
 	private String cantidad;
 
 	private String codigo;

@@ -15,7 +15,9 @@ import java.sql.Timestamp;
 public class Order implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	
+	@EmbeddedId
+	private OrderPK idKey;
+
 	private String clienteCedula;
 
 	private String clienteContactoDepto;
@@ -35,8 +37,6 @@ public class Order implements Serializable {
 	private Timestamp fechaOrden;
 
 	private String glnProveedor;
-
-	private int id;
 
 	private String lugarEntregaCalle;
 
@@ -76,6 +76,57 @@ public class Order implements Serializable {
 	}
 
 	
+
+	public Order(String clienteCedula, String clienteContactoDepto, String clienteContactoEmpleado, String clienteContactoTelefono, String clienteNombre,
+			String estado, Timestamp fechaEntrega, Timestamp fechaIntercambio, Timestamp fechaOrden, String glnProveedor, String glnCliente, String numeroOrden,
+			String lugarEntregaCalle, String lugarEntregaCedula, String lugarEntregaCiudad, String lugarEntregaGlnCliente, String lugarEntregaNombre, String lugarEntregaTelefono,
+			String proveedorCedula, String proveedorContactoDepto, String proveedorContactoEmpleado, String proveedorContactoTelefono, String proveedorNombre,
+			String seqIntercambio, String total, String totalDescuento, String totalItems, String totalIva, String totalPaquetes) {
+		super();
+		idKey = new OrderPK(glnCliente, numeroOrden);
+		this.clienteCedula = clienteCedula;
+		this.clienteContactoDepto = clienteContactoDepto;
+		this.clienteContactoEmpleado = clienteContactoEmpleado;
+		this.clienteContactoTelefono = clienteContactoTelefono;
+		this.clienteNombre = clienteNombre;
+		this.estado = estado;
+		this.fechaEntrega = fechaEntrega;
+		this.fechaIntercambio = fechaIntercambio;
+		this.fechaOrden = fechaOrden;
+		this.glnProveedor = glnProveedor;
+		this.lugarEntregaCalle = lugarEntregaCalle;
+		this.lugarEntregaCedula = lugarEntregaCedula;
+		this.lugarEntregaCiudad = lugarEntregaCiudad;
+		this.lugarEntregaGlnCliente = lugarEntregaGlnCliente;
+		this.lugarEntregaNombre = lugarEntregaNombre;
+		this.lugarEntregaTelefono = lugarEntregaTelefono;
+		this.proveedorCedula = proveedorCedula;
+		this.proveedorContactoDepto = proveedorContactoDepto;
+		this.proveedorContactoEmpleado = proveedorContactoEmpleado;
+		this.proveedorContactoTelefono = proveedorContactoTelefono;
+		this.proveedorNombre = proveedorNombre;
+		this.seqIntercambio = seqIntercambio;
+		this.total = total;
+		this.totalDescuento = totalDescuento;
+		this.totalItems = totalItems;
+		this.totalIva = totalIva;
+		this.totalPaquetes = totalPaquetes;
+	}
+
+
+
+	public OrderPK getIdKey() {
+		return idKey;
+	}
+
+
+
+	public void setIdKey(OrderPK idKey) {
+		this.idKey = idKey;
+	}
+
+
+
 	public String getClienteCedula() {
 		return this.clienteCedula;
 	}
@@ -156,13 +207,7 @@ public class Order implements Serializable {
 		this.glnProveedor = glnProveedor;
 	}
 
-	public int getId() {
-		return this.id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 
 	public String getLugarEntregaCalle() {
 		return this.lugarEntregaCalle;
