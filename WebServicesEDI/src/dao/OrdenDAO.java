@@ -12,7 +12,7 @@ public class OrdenDAO extends JPAEntity<Order> {
 	public OrdenDAO(Class<Order> entityClass) {
 		super(entityClass);
 	}
-/
+//
 	private Logger log = Logger.getLogger(getClass().getName());
 
 	public void salvar(ObjectReturn objReturn) throws Exception {
